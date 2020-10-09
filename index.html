@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <title>Blackjack Game</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
+  <link rel="stylesheet" href="css/BrowserSupport.css">
+  <link rel="stylesheet" href="css/style.css">
+  <!-- Latest compiled and minified CSS -->
+  <link rel="stylesheet" href="https://bootswatch.com/4/lumen/bootstrap.min.css">
+  <!-- jQuery library -->
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+  <!-- Latest compiled JavaScript -->
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+
+
+</head>
+
+
+<body>
+    <!-- created a class called gameBoard for entire game -->
+  <div class="gameBoard"> 
+
+    <h2> BlackJack Game</h2>
+    <hr />
+
+    <div class="cbPanel">
+      <div id='cash'>Player Cash: <b> $3000 </b></div>
+      <div id='bet'>Bet: <b> $300 </b></div>
+    </div>
+
+    <br></br>
+    <br></br>
+
+    <!-- created class for buttons for functioning of events -->
+    <div class='changeBet clearfix'>
+      <button id="subBet" class="btn  btn-danger  btn-md  button  lil  first">-</button>
+      <button id="placeBet" class="btn  btn-primary  btn-lg  button  big"> Place bet</button>
+      <button id="addBet" class="btn  btn-success  btn-md  button lil last"> + </button>
+    </div>
+
+    <div class='hide buttons clearfix'>
+      <button id="playHit" class='btn btn-primary button first'> Hit </button>
+      <button id="playStay" class='btn btn-primary button last'> Stay </button>
+    </div>
+
+    <br />
+<!-- created playagain button and classes for  player and dealer board  -->
+    <div class='fullbar clearfix'>
+      <div id='reset' class='hide button'>Play Again!</div>
+      <div id='startover' class='hide button'>Start Over</div>
+    </div>
+
+
+    <br />
+
+    <div class='title clearfix'>
+      <div class='player' id='txtPlayerName'>Player</div>
+      <div class='computer'>Dealer</div>
+    </div>
+
+    <div id='gameBoard' class='clearfix'>
+      <div class="row" id="hereCard">
+        <!-- <div class  = "col-md-1"></div> -->
+        <div class='col-md-6  player-section card-section' id="mmPlayer"
+          style="border-right: 2px solid rgba(228, 223, 223, 0.664);"></div>
+        <!-- <div class  = "col-md-1"></div> -->
+        <div class='col-md-6  computer-section card-section' id="mmComp"></div>
+      </div>
+
+    </div>
+
+    <br />
+    <div class="row" id="score">
+      <div class="col-md-6" id="gameBoardPlayer" style="  width: 90%;"></div>
+      <div class="col-md-6" id="gameBoardcomp" style="  width: 90%;"></div>
+    </div>
+
+    <div id="resultShow" style="width: 100%;">
+
+    </div>
+
+  </div>
+
+  <script src="Js/BlackJack.js"></script>
+
+</body>
+
+</html>
