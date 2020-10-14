@@ -4,9 +4,10 @@
   
 body{
     padding: 1rem;
-    background-image: url("../background-images/bg_image_11.jpg");
+    background-image: url("../background-images/bg_image_12.jpg");
     background-color: rgb(253, 252, 250);
     background-size: cover;
+    background-repeat: no-repeat;
 }
 
 
@@ -46,6 +47,46 @@ h2{
         width: 50% ; 
         margin: 0 auto;
 }
+
+div .changeBet #subBet:hover
+{
+  background: #ff5858;
+color: antiquewhite;
+box-shadow: 0 0 5px #ff1111,
+            0 0 25px#ff1111,
+            0 0 50px #ff1111,
+            0 0 200px #ff1111;
+}
+
+div .changeBet #addBet:hover
+{
+  background: #4c4fff;
+color: antiquewhite;
+box-shadow: 0 0 5px #3814ff,
+            0 0 25px #3814ff,
+            0 0 50px #3814ff,
+            0 0 200px #3814ff;
+}
+
+div .changeBet #placeBet:hover
+{
+  background: #4c4fff;
+color: antiquewhite;
+box-shadow: 0 0 5px #27fc55,
+            0 0 25px #ff2222,
+            0 0 50px #3713ff,
+            0 0 200px #5ef1ea;
+}
+div .fullbar:hover
+{
+  background: #4c4fff;
+color: antiquewhite;
+box-shadow: 0 0 5px #3814ff,
+            0 0 25px #3814ff,
+            0 0 50px #3814ff,
+            0 0 200px #3814ff;
+}
+
 
 
 
@@ -175,23 +216,134 @@ h2{
 .red {
     color: #e75757;
   }
+
+  
+.anmibox div{
+  position : absolute;
+  width: 60px;
+  height: 55px;
+  background-color: transparent;
+  border: 8px solid #4356fc blur(3px);
+  border-radius:50%;
   
 
-@media screen and (min-width: 401px) {
+}
+.anmibox div:nth-child(1){
+  top: 25%;
+  left:8%;
+  animation: animate 3s linear infinite;
+}
+.anmibox div:nth-child(2){
+  top: 25%;
+  left:90%;
+  animation: animate 5s linear infinite;
+}
+
+@keyframes animate{
+  0%
+  {
+    box-shadow: 0 0 20px rgb(255, 136, 132),
+              inset 0 0 20px rgb(255, 65, 65);
+              filter: hue-rotate(0deg);
+  }
+  20%
+  {
+    box-shadow: 0 0 30px rgb(255, 136, 132),
+              inset 0 0 30px rgb(255, 65, 65);
+              
+  }
+  40%
+  {
+    box-shadow: 0 0 30px rgb(255, 136, 132),
+              inset 0 0 30px rgb(255, 65, 65);
+              
+  }
+  60%
+  {
+    box-shadow: 0 0 10px rgb(255, 136, 132),
+              inset 0 0 10px rgb(255, 65, 65);
+              
+  }
+  100%
+  {
+    box-shadow: 0 0 20px rgb(255, 136, 132),
+              inset 0 0 20px rgb(255, 65, 65);
+              filter: hue-rotate(360deg);
+  }
+}
+
+.anmiboxs div{
+  position : absolute;
+  width: 18px;
+  height: 18px; 
+  background-color: transparent;
+
+}
+.anmiboxs div:nth-child(1){
+  top: 98%;
+  left:18%;
+  border: 3px solid #2600ce ;
+  box-shadow: 0 0 20px rgb(8, 72, 248),
+              inset 0 0 20px rgb(247, 23, 7);
+              filter: hue-rotate(0deg);
+  animation: animates 7s linear infinite;
+}
+.anmiboxs div:nth-child(2){
+  top: 98%;
+  left:82%;
+  border: 3px solid #ff0000 ;
+  box-shadow: 0 0 20px rgb(1, 18, 255),
+              inset 0 0 40px rgb(22, 5, 255);
+              filter: hue-rotate(0deg);
+  animation: animates 9s linear infinite;
+}
+  @keyframes animates {
+    0%{
+        transform: scale(0) translateY(0px) rotate(0);
+        opacity:1;
+        
+    }
+    100%{
+        transform: scale(4.5) translateY(-90px) rotate(360deg);
+        opacity:0;
+        
+    }
+}
+ 
+
+  
+
+@media screen and (min-width: 200px) {
     html {
       font-size: 10px;
+   
     }
+  
+    
   }
   
 @media screen and (min-width: 590px) {
     html {
       font-size: 13px;
+  
     }
+    
   }
   
 @media screen and (min-width: 774px) {
     html {
       font-size: 16px;
+    }
+
+    
+  }
+
+  @media screen and (max-width: 1245px) {
+    body div.anmibox {
+      display: none;
+    }
+    body div.anmiboxs {
+      display: none;
     }
   }
 

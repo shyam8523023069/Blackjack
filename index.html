@@ -4,9 +4,11 @@
 <head>
   <meta charset="UTF-8">
   <title>Blackjack Game</title>
-  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
+
+
   <link rel="stylesheet" href="css/BrowserSupport.css">
   <link rel="stylesheet" href="css/style.css">
+
   <!-- Latest compiled and minified CSS -->
   <link rel="stylesheet" href="https://bootswatch.com/4/lumen/bootstrap.min.css">
   <!-- jQuery library -->
@@ -19,19 +21,33 @@
 
 
 <body>
+  
     <!-- created a class called gameBoard for entire game -->
   <div class="gameBoard"> 
-
+        
+    <div class="anmibox">
+      <div></div>
+      <div></div>
+    </div>
+    
+    <div class="anmiboxs">
+      <div></div>
+      <div></div>
+    </div>
+ 
     <h2> BlackJack Game</h2>
-    <hr />
+   
 
     <div class="cbPanel">
+    
       <div id='cash'>Player Cash: <b> $3000 </b></div>
       <div id='bet'>Bet: <b> $300 </b></div>
     </div>
 
     <br></br>
     <br></br>
+     
+    
 
     <!-- created class for buttons for functioning of events -->
     <div class='changeBet clearfix'>

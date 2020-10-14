@@ -1,14 +1,14 @@
-var cash = 3000;
-var bet = 300;
+var cash = 3000;// player full amount
+var bet = 300;// initialize a minm bet amount
 
-var faces = ['A', '2', '3', '4', '5', '6', '7', '8', '9', '10', 'J', 'Q', 'K'];
-var suits = ['Diamonds', 'Clubs', 'Hearts', 'Spades'];
+var faces = ['A', '2', '3', '4', '5', '6', '7', '8', '9', '10', 'J', 'Q', 'K'];//deck of cards values
+var suits = ['Diamonds', 'Clubs', 'Hearts', 'Spades'];//deck of cards names
 
-var deck = [];
+var deck = [];//empty array
 
 
 // function displaying the prompt message
-$(function () {
+$(function () { //"self-invoking" expression is invoked automatically, without being called.
     var txt;
     var person = prompt("Please enter your name:", "Player Name");
     if (person == null || person == "") {
@@ -31,15 +31,15 @@ function card(name, face, suit, value) {
 // shuffle deck to insert values in the deck[] array
 function shuffleDeck() { 
     deck = [];
-    var temp;
+   
     for (var i = 0; i < faces.length; i++) {
         for (var j = 0; j < suits.length; j++) {
 
             if (i > 9) {
-                temp = new card(faces[i] + ' of ' + suits[j], faces[i], suits[j], 10);
+               var temp = new card(faces[i] + ' of ' + suits[j], faces[i], suits[j], 10);
             }
             else {
-                temp = new card(faces[i] + ' of ' + suits[j], faces[i], suits[j], i + 1);
+               var temp = new card(faces[i] + ' of ' + suits[j], faces[i], suits[j], i + 1);
             }
             deck.push(temp);
         }
@@ -56,17 +56,17 @@ function hand() {
 }
 
 function startGame() {
-    playerHand = new hand();
+    playerHand = new hand();//call from 52
     computerHand = new hand();
-    playerHand.player = 'player';
-    computerHand.player = 'computer';
-    startingHand();
-    showValue();
+    playerHand.player = 'player'; // in line 53 "player" is writen
+    computerHand.player = 'computer';// in line 53 "computer" is writen
+    startingHand();// go to line 80
+    showValue();// go to line 93
 
     if (playerHand.value == 21) {
         win();
-        $('.buttons').addClass('hide');
-        $('#reset').removeClass('hide');
+        $('.buttons').addClass('hide'); //hide buttons 
+        $('#reset').removeClass('hide'); // remove hide for play again
 
 
         if (deck.length < 10) {
@@ -79,14 +79,14 @@ function startGame() {
 //created functions for starting number of cards for players and dealer
 function startingHand() {
     for (var i = 0; i < 2; i++) {
-        hit(playerHand);
+        hit(playerHand); // go to line 179 ....&.....2 card for player
     }
     computerHit();
 }
 
 function computerHit() {
-    hit(computerHand);
-    showCompValue();
+    hit(computerHand); //go to line 179 ....&..... 1 card for delear
+    showCompValue(); // go to line 105
 }
 
 // created functions for showing value of player and dealer
@@ -94,8 +94,8 @@ function showValue() {
 
     $('#gameBoardPlayer').append('<div class="player-value"> ' + playerHand.value.toString() + '  </div>');
     if (playerHand.value > 21) {
-        $('#gameBoardPlayer').append('<div class="player-value">' + "You Bust!" + '</div>');
-        showCompValue();
+        $('#gameBoardPlayer').append('<div class="player-value">' + "You Bust..!" + '</div>');
+        showCompValue(); 
         computerTurn();
         $('.buttons').addClass('hide');
     }
@@ -105,11 +105,11 @@ function showValue() {
 function showCompValue() {
     $('#gameBoardcomp').append('<div class="computer-value"> ' + computerHand.value.toString() + ' </div>');
     if (computerHand.value > 21) {
-        $('#gameBoardcomp').append('<div class="computer-value"> ' + "Computer Bust!" + ' </div>');
+        $('#gameBoardcomp').append('<div class="computer-value"> ' + "Computer Bust..!" + ' </div>');
     }
 }
 
-// created function for adding a new card always and at what position
+// created function for "adding" a new card always and at what position
 function addCards(addHand) {
     var total = 0;
     var list = [];
@@ -180,8 +180,8 @@ function hit(hitHand) {
     var num = Math.floor((Math.random() * (deck.length - 1)));
     var temp = deck[num];
     hitHand.cards.push(temp);
-    hitHand.value = addCards(hitHand);
-    playSound('hit');
+    hitHand.value = addCards(hitHand);// go to line 113
+   
 
 
     if (deck[num].suit == "Diamonds") {
@@ -222,7 +222,7 @@ function hit(hitHand) {
             buildCard('computer', 'black', deck[num].face, '&spades;', hitHand);
         }
     }
-    deck.splice(num, 1);
+    deck.splice(num, 1); //At position "num", remove 1 item
 }
 
 // created a function for computer turn  what computer has to do after players turn
@@ -254,14 +254,14 @@ function win() {
     $('#resultShow').append('<div class="result">You win $' + bet.toString() + '!</div');
     cash += bet;
     updateCashBet();
-    playSound('win');
+    
 }
 
 function draw() {
     $('#resultShow').text('');
     $('#resultShow').removeClass('hide');
     $('#resultShow').append('<div class="result">Draw!</div');
-    playSound('draw');
+  
 }
 
 function lose() {
@@ -274,7 +274,7 @@ function lose() {
     if (cash < bet) {
         bet = 100;
     }
-    playSound('lose');
+    
 }
 
 // created a function for checking the score
@@ -334,72 +334,57 @@ function reset() {
     $('#resultShow').addClass('hide');
 }
 
-function startover() {
-    cash = 1000;
-    bet = 100;
-    updateCashBet();
-    shuffleDeck();
-    reset();
-}
 
-$('#playHit').click(function () {
+$('#addBet').click(function () {//bet amount increse
+    if (bet < cash) {
+        bet += 100;
+        updateCashBet(); // go to line 246
+    }
+});
+
+$('#subBet').click(function () {// bet amouny decrese
+    if (bet > 100) {
+        bet -= 100;
+        updateCashBet();//go to line 246
+    }
+});
+
+$('#placeBet').click(function () {  //place bet and stars game
+    $('.changeBet').addClass('hide');// here hide the 1st stage buttons of "-", "+", "placebet"
+    $('.buttons').removeClass('hide'); // remove hide on "hit" and "stay"
+    startGame(); // go to line 58
+});
+
+
+$('#playHit').click(function () {//add cards
     hit(playerHand);
     showValue();
 });
 
-$('#playStay').click(function () {
+$('#playStay').click(function () {// stays for player and dealer shows score
     computerHit();
     computerTurn();
     $('.buttons').addClass('hide');
 });
 
-$('#addBet').click(function () {
-    if (bet < cash) {
-        bet += 100;
-        updateCashBet();
-    }
-});
 
-$('#subBet').click(function () {
-    if (bet > 100) {
-        bet -= 100;
-        updateCashBet();
-    }
-});
 
-$('#placeBet').click(function () {
-    $('.changeBet').addClass('hide');
-    $('.buttons').removeClass('hide');
-    startGame();
-});
 
-$('#reset').click(function () {
+$('#reset').click(function () { //plage again 
     $('#reset').addClass('hide');
     reset();
 });
 
-$('#startover').click(function () {
+$('#startover').click(function () {// when no amount on player cash then again restars game from first
     $('#startover').addClass('hide');
     startover();
 });
 
-// Sounds while playing
-function playSound(sound) {
-    if (sound == 'win') {
-        var audio = new Audio('https://goo.gl/RvisKU');
-        audio.volume = .3;
-    }
-    if (sound == 'draw') {
-        var audio = new Audio('https://goo.gl/F4zXc9');
-        audio.volume = .3;
-    }
-    if (sound == 'lose') {
-        var audio = new Audio('https://goo.gl/cnh2hB');
-        audio.volume = .3;
-    }
-    if (sound == 'hit') {
-        var audio = new Audio('https://goo.gl/JuVzLs');
-        audio.volume = .05;
-    }
-    audio.play();
+function startover() {
+    cash = 3000;
+    bet = 300;
+    updateCashBet();
+    shuffleDeck();
+    reset();
 }
+
